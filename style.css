@@ -1,10 +1,14 @@
 body { 
     font-family: Arial, sans-serif; 
     margin: 40px; 
-    background-color: #babec5;
+    background-color: #e4e7ec;
 }
         header { margin-bottom: 30px; }
-        h1 { color: #333; }
+        h1, h2, h3, h4 {
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-color: #000000;
+}
         ul { list-style-type: none; padding: 0; }
         li { margin-bottom: 10px; }
         section { margin-bottom: 30px; }
@@ -15,7 +19,7 @@ body {
     width: 250px;
     height: 80px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    background: #fff;
+    background: #000000;
     border-radius: 8px;
     padding: 5px;
     z-index: 1000;
@@ -35,7 +39,7 @@ body {
     width: 40px;
     height: 120px;
     background: #fff;
-    border: 2px solid #333;
+    border: 2px solid #000000;
     border-radius: 4px;
     font-size: 1.2em;
     cursor: pointer;
@@ -43,12 +47,12 @@ body {
     transition: background 0.1s;
 }
 .piano-key:active {
-    background: #e0e0e0;
+    background: #000000;
 }
 .key-num {
     font-size: 0.9em;
-    color: #888;
+    color: #000000;
 }
 .piano-key.active {
-    background: #d0e0ff;
+    background: #6245a5;
 }
