@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <p>Hello! I'm Pasi Määttä. Welcome to my portfolio website.</p>
+    </header>
+
+    <div class="music-player-box">
+        <iframe width="250" height="80" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/severity-index/sets/ehh&color=%23ff5500&inverse=false&auto_play=false&show_user=true">
+        </iframe>
+    </div>
+
+    <section>
+        <h2>About Me</h2>
+        <p>25 years old software developer student, who enjoys visual side of the things.</p>
+        <p>Outside of School, I enjoy making music(Embed player top right,careful about the volume), visual art and cooking/baking.</p>
+    </section>
+
+    <section>
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:Pasi.TMaatta@outlook.com">Pasi.TMaatta@outlook.com</a></p>
+    </section>
+
+    <section>
+        <h2>Make Music</h2>
+        <p>E D C D | E E E - | D D D - | E G G -
+           E D C D | E E E E | D D E D | C - -
+           
+.</p>
+        <p>Mary had a little lamb.</p>
+        <div class="mini-piano">
+            <button class="piano-key" data-note="C">
+                C<br><span class="key-num">1</span>
+            </button>
+            <button class="piano-key" data-note="D">
+                D<br><span class="key-num">2</span>
+            </button>
+            <button class="piano-key" data-note="E">
+                E<br><span class="key-num">3</span>
+            </button>
+            <button class="piano-key" data-note="F">
+                F<br><span class="key-num">4</span>
+            </button>
+            <button class="piano-key" data-note="G">
+                G<br><span class="key-num">5</span>
+            </button>
+        </div>
+    </section>
+<script>
+const notes = {
+    C: new Audio('Sounds/C3.mp3'),
+    D: new Audio('Sounds/D3.mp3'),
+    E: new Audio('Sounds/E3.mp3'),
+    F: new Audio('Sounds/F3.mp3'),
+    G: new Audio('Sounds/G3.mp3')
+};
+const keyMap = {
+    '1': 'C',
+    '2': 'D',
+    '3': 'E',
+    '4': 'F',
+    '5': 'G'
+};
+
+function stopAllNotes() {
+    Object.values(notes).forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+}
+
+document.querySelectorAll('.piano-key').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const note = btn.getAttribute('data-note');
+        stopAllNotes();
+        notes[note].play();
+    });
+});
+
+document.addEventListener('keydown', (e) => {
+    if (keyMap[e.key]) {
+        const note = keyMap[e.key];
+        stopAllNotes();
+        notes[note].play();
+        const btn = document.querySelector(`.piano-key[data-note="${note}"]`);
+        if (btn) {
+            btn.classList.add('active');
+            setTimeout(() => btn.classList.remove('active'), 100);
+        }
+    }
+});
+</script>
+</body>
+</html>
